@@ -15,7 +15,7 @@ async function run (){
     console.log('Connected.....');
 
     const result = await producer.send({
-      topic: 'seb-demo',
+      topic: 'Users',
       messages: [ { "value": msg,
                     "partition": partition }]
 
@@ -23,21 +23,11 @@ async function run (){
 
     console.log(`Sent Successfully ${JSON.stringify(result)}`);
 
-
-    // await admin.createTopics({
-    //   topics: [
-    //     {
-    //       "topic": "seb-demo",
-    //       "numPartitions": 2
-    //     }
-    //   ]
-
-    console.log('Created Successfully.....');
     await producer.disconnect();
 
   }
-  catch(e){
-    console.error(e);
+  catch(ex){
+    console.error(`Something bad happened${ex}`);
   }
   finally{
   }

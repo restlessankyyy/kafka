@@ -1,5 +1,5 @@
 const { Kafka } = require('kafkajs');
-const msg = process.argv[2];
+
 run();
 async function run (){
   try{
@@ -8,20 +8,20 @@ async function run (){
       brokers: ['localhost:9092']
     })
     // const admin = kafka.admin();
-    const consumer = kafka.consumer();
+    const consumer = kafka.consumer({"groupId": "test"});
     console.log('Connecting.....');
 
     await consumer.connect();
     console.log('Connected.....');
 
     await consumer.subscribe({
-      topic: 'seb-demo',
+      topic: 'Users',
       fromBeginning: true
 
     });
     await consumer.run({
       eachMessage: async result => {
-        console.log(`Received ${result.message.value}`);
+        console.log(`Received ${result.message.value} on partition ${result.partition}`);
       }
     });
 
@@ -33,7 +33,6 @@ async function run (){
     //     }
     //   ]
 
-    console.log('Created Successfully.....');
     // await producer.disconnect();
 
   }
@@ -41,7 +40,7 @@ async function run (){
     console.error(e);
   }
   finally{
-    process.exit(0);
+
   }
 
 }
