@@ -17,13 +17,9 @@ async function run (){
     console.log('Connected.....');
     await admin.deleteTopics({
       topics: [
-        {
-          "topic": "seb-stuff",
-          "numPartitions": 2
-        },
+      
         { 
-          "topic": "seb-demo",
-          "numPartitions": 2
+          "topic": "seb-demo"
         }
       ]
 
