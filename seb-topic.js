@@ -15,7 +15,7 @@ async function run (){
     await admin.createTopics({
       topics: [
         {
-          "topic": "seb-stuff",
+          "topic": "seb-stuff1099",
           "numPartitions": 2
         }
       ]
@@ -25,8 +25,8 @@ async function run (){
     await admin.disconnect();
 
   }
-  catch(e){
-    console.error(e);
+  catch(ex){
+    console.error(`Something bad happened${ex}`);
   }
   finally{
     process.exit(0);
