@@ -21,7 +21,7 @@ services:
       - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
       - KAFKAJS_NO_PARTITIONER_WARNING=1
-      - KAFKA_ADVERTISED_LISTENER=PLAINTEXT://localhost:9092 # This is needed for the Kafka Manager to work
+      - KAFKA_ADVERTISED_LISTENER=PLAINTEXT://kafka-machine01:9092 # This is needed for the Kafka Manager to work
       
     depends_on:
       - zookeeper
